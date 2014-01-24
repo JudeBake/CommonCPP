@@ -26,7 +26,7 @@ namespace CommonCPP
 class DateTime
 {
 public:
-	/*
+	/**
 	 * \enum TimeBase
 	 * \brief The time base constant used for getting a formatted strig.
 	 *
@@ -42,11 +42,11 @@ public:
 
 private:
 	time_t timeData;
-	struct tm *UTCTime;
-	struct tm *localTime;
+	struct tm UTCTime;
+	struct tm localTime;
 
 public:
-	/*
+	/**
 	 * \brief Static method the get the current date/time from the system.
 	 *
 	 * \return Pointer to a new DateTime reference initialized to the current
@@ -54,28 +54,28 @@ public:
 	 */
 	static DateTime* getCurrentDateTime(void);
 
-	/*
+	/**
 	 * \brief Basic DateTime constructor.
 	 *
 	 * The DateTime is initialized at 00:00:00 1970/01/01.
 	 */
 	DateTime(void);
 
-	/*
+	/**
 	 * \brief DateTime constructor with a given time.
 	 *
 	 * \param iTime The given time to which initialize the DateTime.
 	 */
 	DateTime(const time_t iTime);
 
-	/*
+	/**
 	 * \brief DateTime constructor from DateTime reference.
 	 *
 	 * \param iDateTime The reference DateTime from which to initialize.
 	 */
 	DateTime(const DateTime& iDateTime);
 
-	/*
+	/**
 	 * \brief DateTime copy constructor (= operator).
 	 *
 	 * \param iDateTime The DateTime to copy.
@@ -84,21 +84,21 @@ public:
 	 */
 	DateTime& operator=(DateTime iDateTime);
 
-	/*
+	/**
 	 * \brief DateTime time setter.
 	 *
 	 * \param iTime The time value from which to set the time.
 	 */
 	void setTime(const time_t iTime);
 
-	/*
+	/**
 	 * \brief DateTime time getter.
 	 *
 	 * \return The time value of DateTime.
 	 */
 	time_t getTime(void);
 
-	/*
+	/**
 	 * \brief DateTime string formatter.
 	 *
 	 * \param oStr Pointer to the destination char array.
@@ -113,7 +113,7 @@ public:
 	size_t getFormattedStr(char* oStr, size_t iMaxSize, const char* iFormat,
 						   const TimeBase iTimeBsae);
 
-	/*
+	/**
 	 * \brief DateTime operator -. Give the difference between two DateTime.
 	 *
 	 * \param iDateTime2 The DateTime reference that serve as second operand.
@@ -122,12 +122,12 @@ public:
 	 */
 	double operator-(const DateTime& iDateTime2);
 
-	/*
+	/**
 	 * \brief Destructor of DateTime class.
 	 */
 	virtual ~DateTime();
 };
 
-} /* namespace CommonLib */
+} /* namespace CommonCPP */
 
 #endif /* DATETIME_H_ */

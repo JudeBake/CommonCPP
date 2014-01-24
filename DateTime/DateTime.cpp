@@ -25,37 +25,37 @@ DateTime* DateTime::getCurrentDateTime(void)
 DateTime::DateTime()
 {
 	timeData = 0;
-	UTCTime = gmtime(&timeData);
-	localTime = localtime(&timeData);
+	gmtime_r(&timeData, &UTCTime);
+	localtime_r(&timeData, &localTime);
 }
 
 DateTime::DateTime(const time_t iTime)
 {
 	timeData = iTime;
-	UTCTime = gmtime(&timeData);
-	localTime = localtime(&timeData);
+	gmtime_r(&timeData, &UTCTime);
+	localtime_r(&timeData, &localTime);
 }
 
 DateTime::DateTime(const DateTime& iDateTime)
 {
 	timeData = iDateTime.timeData;
-	UTCTime = gmtime(&timeData);
-	localTime = localtime(&timeData);
+	gmtime_r(&timeData, &UTCTime);
+	localtime_r(&timeData, &localTime);
 }
 
 DateTime& DateTime::operator=(DateTime iDateTime)
 {
 	timeData = iDateTime.timeData;
-	UTCTime = gmtime(&timeData);
-	localTime = localtime(&timeData);
+	gmtime_r(&timeData, &UTCTime);
+	localtime_r(&timeData, &localTime);
 	return *this;
 }
 
 void DateTime::setTime(const time_t iTime)
 {
 	timeData = iTime;
-	UTCTime = gmtime(&timeData);
-	localTime = localtime(&timeData);
+	gmtime_r(&timeData, &UTCTime);
+	localtime_r(&timeData, &localTime);
 }
 
 time_t DateTime::getTime(void)
@@ -71,16 +71,10 @@ size_t DateTime::getFormattedStr(char* oStr, size_t iMaxSize,
 	switch(iTimeBase)
 	{
 	case UTC:
-		if (UTCTime)
-		{
-			charNb = strftime(oStr, iMaxSize, iFormat, UTCTime);
-		}
+		charNb = strftime(oStr, iMaxSize, iFormat, &UTCTime);
 		break;
 	case LOCAL:
-		if (localTime)
-		{
-			charNb = strftime(oStr, iMaxSize, iFormat, localTime);
-		}
+		charNb = strftime(oStr, iMaxSize, iFormat, &localTime);
 		break;
 	}
 
@@ -90,12 +84,6 @@ size_t DateTime::getFormattedStr(char* oStr, size_t iMaxSize,
 double DateTime::operator-(const DateTime& iDateTime2)
 {
 	return difftime(iDateTime2.timeData, timeData);
-}
-
-DateTime::~DateTime()
-{
-	free(UTCTime);
-	free(localTime);
 }
 
 } /* namespace CommonLib */
