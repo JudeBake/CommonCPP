@@ -1,5 +1,6 @@
 /**
  * \file DateTime.h
+ * \class CommonCPP::DateTime
  * \brief Representation of a date/time.
  *
  * This class is the representation of a date/time value.It actually wraps the
@@ -69,14 +70,14 @@ public:
 	DateTime(const time_t iTime);
 
 	/**
-	 * \brief DateTime constructor from DateTime reference.
+	 * \brief DateTime copy constructor.
 	 *
 	 * \param iDateTime The reference DateTime from which to initialize.
 	 */
 	DateTime(const DateTime& iDateTime);
 
 	/**
-	 * \brief DateTime copy constructor (= operator).
+	 * \brief DateTime assignment operator.
 	 *
 	 * \param iDateTime The DateTime to copy.
 	 *
@@ -111,7 +112,7 @@ public:
 	 * or was unable to format the string.
 	 */
 	size_t getFormattedStr(char* oStr, size_t iMaxSize, const char* iFormat,
-						   const TimeBase iTimeBsae);
+						   const TimeBase iTimeBase);
 
 	/**
 	 * \brief DateTime operator -. Give the difference between two DateTime.
