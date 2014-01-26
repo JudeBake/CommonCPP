@@ -86,4 +86,9 @@ double DateTime::operator-(const DateTime& iDateTime2)
 	return difftime(iDateTime2.timeData, timeData);
 }
 
+DateTime::~DateTime(void)
+{
+
+}
+
 } /* namespace CommonLib */

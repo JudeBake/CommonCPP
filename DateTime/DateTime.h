@@ -79,9 +79,9 @@ public:
 	/**
 	 * \brief DateTime assignment operator.
 	 *
-	 * \param iDateTime The DateTime to copy.
+	 * \param iDateTime The right hand operand DateTime.
 	 *
-	 * \return A new DateTime reference.
+	 * \return DateTime reference of the left hand operand.
 	 */
 	DateTime& operator=(DateTime iDateTime);
 
