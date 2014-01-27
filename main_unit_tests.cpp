@@ -11,7 +11,7 @@
  * \version Commit Id: &REVISION&
  */
 
-#define BOOST_TEST_MAIN
+#define BOOST_TEST_MODULE "CommonCPP unit test cases."
 
 #include <boost/test/unit_test.hpp>
 
